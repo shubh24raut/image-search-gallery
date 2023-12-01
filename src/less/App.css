@@ -1,0 +1,38 @@
+.App {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  flex-direction: column;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  background-color: #f5b4b4;
+  width: 100%;
+  height: 10vh;
+  gap: 20px;
+  padding: 10px;
+}
+.header .logo {
+  display: flex;
+  padding: 10px;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  background-color: black;
+  border-radius: 4px;
+}
+.header .search-debounce-input {
+  display: flex;
+  width: 30%;
+  height: 50px;
+}
+.image-container {
+  overflow-y: auto;
+  /* Use 'auto' for scroll only when necessary */
+  height: 90vh;
+  padding: 20px;
+}
