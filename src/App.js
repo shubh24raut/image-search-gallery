@@ -88,15 +88,17 @@ function App() {
         {/* Display images */}
         {imageData.map((image, index) => (
           <Row gutter={[16, 16]}>
+            {/* Map through imageData to display images */}
             {imageData.map((image, index) => (
               <Col key={image.id} xs={24} sm={12} md={8} lg={6}>
                 <div className="image-item">
-                  <img
-                    src={image.urls.regular}
-                    alt={image.alt_description}
-                    style={{ width: "100%", height: "auto" }}
-                    loading="lazy" // Enable lazy loading for images
-                  />
+                  <div className="image-wrapper">
+                    <img
+                      src={image.urls.regular}
+                      alt={image.alt_description}
+                      loading="lazy"
+                    />
+                  </div>
                 </div>
               </Col>
             ))}

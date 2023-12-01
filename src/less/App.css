@@ -14,10 +14,13 @@
   height: 10vh;
   gap: 20px;
   padding: 10px;
+  box-shadow: 0px 6px 4px 0px rgba(0, 0, 0, 0.1);
 }
 .header .logo {
   display: flex;
-  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
   color: white;
   font-size: 20px;
   font-weight: 700;
@@ -35,4 +38,24 @@
   /* Use 'auto' for scroll only when necessary */
   height: 90vh;
   padding: 20px;
+}
+.image-container .image-item {
+  box-shadow: 8px 9px 5px -6px rgba(0, 0, 0, 0.1);
+}
+.image-container .image-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+  /* Maintain aspect ratio (1:1) for the wrapper */
+  overflow: hidden;
+}
+.image-container .image-wrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Fill the container */
+  object-fit: cover;
+  /* Maintain aspect ratio; cover the entire area */
 }
