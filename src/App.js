@@ -3,7 +3,7 @@ import "./less/App.less";
 import { searchPhotos } from "./common/common-repository";
 import { DATA_PER_PAGE } from "./common/constants";
 import SearchComponent from "./common/components/SearchDebounce";
-import { Col, Row, Spin } from "antd";
+import { Button, Col, Row, Spin } from "antd";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -22,6 +22,7 @@ function App() {
         itemsPerPage,
       });
       setImageData((prevData) => [...prevData, ...response]);
+      console.error(response);
     } catch (error) {
       console.error("Error fetching images:", error);
     } finally {
@@ -85,25 +86,42 @@ function App() {
         />
       </div>
       <div className="image-container">
-        {/* Display images */}
-        {imageData.map((image, index) => (
-          <Row gutter={[16, 16]}>
-            {/* Map through imageData to display images */}
-            {imageData.map((image, index) => (
-              <Col key={image.id} xs={24} sm={12} md={8} lg={6}>
-                <div className="image-item">
-                  <div className="image-wrapper">
-                    <img
-                      src={image.urls.regular}
-                      alt={image.alt_description}
-                      loading="lazy"
-                    />
-                  </div>
+        <Row gutter={[16, 16]}>
+          {imageData.map((image, index) => (
+            <Col key={index} xs={24} sm={12} md={8} lg={6}>
+              <div className="image-item">
+                <div className="image-wrapper">
+                  <img
+                    src={image.urls.regular}
+                    alt={image.alt_description}
+                    loading="lazy"
+                  />
                 </div>
-              </Col>
-            ))}
-          </Row>
-        ))}
+                <Button
+                  style={{
+                    background: `${image.color}`,
+                    border: "none",
+                    color: "white",
+                    borderRadius: "1px",
+                    height: "50px",
+                    fontSize: "18px",
+                  }}
+                  onClick={() => {
+                    const downloadLink = document.createElement("a");
+                    downloadLink.href = image.urls.raw; // URL for download
+                    downloadLink.target = "_blank"; // Open in new tab
+                    downloadLink.download = "image"; // Set default filename
+                    document.body.appendChild(downloadLink);
+                    downloadLink.click();
+                    document.body.removeChild(downloadLink);
+                  }}
+                >
+                  Download
+                </Button>
+              </div>
+            </Col>
+          ))}
+        </Row>
         <div
           ref={loaderRef}
           style={{
@@ -113,7 +131,7 @@ function App() {
             margin: "2px",
           }}
         >
-          <Spin />
+          {/* <Spin /> */}
         </div>
         {/* Loader element */}
       </div>
