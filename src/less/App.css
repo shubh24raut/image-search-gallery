@@ -8,7 +8,7 @@
 .header {
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
   background-color: #f5b4b4;
   width: 100%;
   height: 10vh;
@@ -30,7 +30,7 @@
 }
 .header .search-debounce-input {
   display: flex;
-  width: 30%;
+  width: 50%;
   height: 50px;
 }
 .image-container {
@@ -38,12 +38,14 @@
   /* Use 'auto' for scroll only when necessary */
   height: 90vh;
   padding: 20px;
+  background-color: #f8efef;
 }
 .image-container .image-item {
   display: flex;
   flex-direction: column;
   gap: 2px;
   box-shadow: 8px 9px 5px -6px rgba(0, 0, 0, 0.1);
+  background-color: #f8efef;
 }
 .image-container .image-wrapper {
   position: relative;
@@ -51,6 +53,7 @@
   padding-top: 100%;
   /* Maintain aspect ratio (1:1) for the wrapper */
   overflow: hidden;
+  border-radius: 5px;
 }
 .image-container .image-wrapper img {
   position: absolute;

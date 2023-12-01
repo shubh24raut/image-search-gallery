@@ -3,7 +3,8 @@ import "./less/App.less";
 import { searchPhotos } from "./common/common-repository";
 import { DATA_PER_PAGE } from "./common/constants";
 import SearchComponent from "./common/components/SearchDebounce";
-import { Button, Col, Row, Spin } from "antd";
+import { Button, Col, Row } from "antd";
+import { ThreeDots } from "react-loader-spinner";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -72,7 +73,7 @@ function App() {
   return (
     <div className="App">
       <div className="header">
-        <div className="logo">BLITZ SPLASH</div>
+        {/* <div className="logo">BLITZ SPLASH</div> */}
         <SearchComponent
           name="Images"
           debounceTime={1}
@@ -102,7 +103,7 @@ function App() {
                     background: `${image.color}`,
                     border: "none",
                     color: "white",
-                    borderRadius: "1px",
+                    borderRadius: "5px",
                     height: "50px",
                     fontSize: "18px",
                   }}
@@ -128,10 +129,19 @@ function App() {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            margin: "2px",
+            padding: "10px",
           }}
         >
-          {/* <Spin /> */}
+          <ThreeDots
+            height="80"
+            width="80"
+            radius="10"
+            color="#4fa94d"
+            ariaLabel="three-dots-loading"
+            wrapperStyle={{}}
+            wrapperClassName=""
+            visible={loading}
+          />
         </div>
         {/* Loader element */}
       </div>
